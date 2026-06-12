@@ -1,446 +1,388 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bulyan DEV — Solusi RME & IT Kesehatan</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bulyan DEV — Solusi RME & IT Kesehatan</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.14.0/dist/tabler-icons.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.14.0/dist/tabler-icons.min.css">
+:root {
+  --blue: #378ADD;
+  --blue-dark: #185FA5;
+  --blue-bg: #E6F1FB;
+  --blue-text: #0C447C;
+  --teal-bg: #E1F5EE;
+  --teal-text: #085041;
+  --amber-bg: #FAEEDA;
+  --amber-text: #633806;
+  --border: #eaecf0;
+  --text: #0f0f0f;
+  --muted: #666;
+  --nav-h: 64px;
+}
 
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: 'Outfit', sans-serif;
+  background: #fff;
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 
-        :root {
-            --blue:     #378ADD;
-            --blue-dark:#185FA5;
-            --blue-bg:  #E6F1FB;
-            --blue-text:#0C447C;
-            --teal-bg:  #E1F5EE;
-            --teal-text:#085041;
-            --amber-bg: #FAEEDA;
-            --amber-text:#633806;
-        }
+a { text-decoration: none; }
 
-        html { font-size: 16px; }
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: #ffffff;
-            color: #1a1a1a;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+/* ── NAVBAR ── */
+nav {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--text);
+}
+.logo .dot { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; }
+.logo .accent { color: var(--blue); }
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  font-size: 13.5px;
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--blue);
+  color: #fff !important;
+  padding: 9px 22px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.85; }
 
-        /* ── NAVBAR ── */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 48px;
-            border-bottom: 0.5px solid #e8eaed;
-            position: sticky;
-            top: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(12px);
-            z-index: 100;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 17px;
-            font-weight: 600;
-            letter-spacing: -0.3px;
-            color: #1a1a1a;
-            text-decoration: none;
-        }
-        .logo .dot {
-            width: 8px; height: 8px;
-            background: var(--blue);
-            border-radius: 50%;
-        }
-        .logo span { color: var(--blue); }
-        .nav-links { display: flex; gap: 28px; align-items: center; }
-        .nav-links a {
-            font-size: 13.5px;
-            color: #555;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: #1a1a1a; }
-        .btn-cta {
-            background: var(--blue);
-            color: #fff;
-            border: none;
-            padding: 9px 22px;
-            border-radius: 20px;
-            font-size: 13.5px;
-            font-weight: 500;
-            cursor: pointer;
-            font-family: 'Outfit', sans-serif;
-            transition: opacity 0.2s;
-            text-decoration: none;
-        }
-        .btn-cta:hover { opacity: 0.87; }
+/* ── WRAPPER ── */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
 
-        /* ── HERO ── */
-        .hero {
-            padding: 88px 48px 80px;
-            max-width: 860px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--blue-dark);
-            background: var(--blue-bg);
-            border-radius: 20px;
-            padding: 5px 14px;
-            margin-bottom: 28px;
-            letter-spacing: 0.2px;
-        }
-        .pill .dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; }
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 600;
-            line-height: 1.15;
-            letter-spacing: -1.5px;
-            color: #0f0f0f;
-            margin-bottom: 20px;
-        }
-        .hero h1 em { color: var(--blue); font-style: normal; }
-        .hero p {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.75;
-            max-width: 500px;
-            margin: 0 auto 36px;
-            font-weight: 400;
-        }
-        .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-        .btn-primary {
-            background: var(--blue);
-            color: #fff;
-            border: none;
-            padding: 13px 28px;
-            border-radius: 24px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            font-family: 'Outfit', sans-serif;
-            transition: opacity 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-        }
-        .btn-primary:hover { opacity: 0.87; color: #fff; }
-        .btn-ghost {
-            background: transparent;
-            color: #555;
-            border: 0.5px solid #d0d5dd;
-            padding: 13px 28px;
-            border-radius: 24px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            font-family: 'Outfit', sans-serif;
-            transition: all 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-        }
-        .btn-ghost:hover { border-color: #999; color: #1a1a1a; }
+/* ── HERO ── */
+.hero {
+  padding: 80px 48px 72px;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--blue-dark);
+  background: var(--blue-bg);
+  border-radius: 20px;
+  padding: 5px 14px;
+  margin-bottom: 28px;
+  letter-spacing: 0.2px;
+}
+.pill .dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; }
+.hero h1 {
+  font-size: 46px;
+  font-weight: 600;
+  line-height: 1.16;
+  letter-spacing: -1.4px;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.hero h1 em { color: var(--blue); font-style: normal; }
+.hero p {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 480px;
+  margin: 0 auto 36px;
+}
+.btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+  padding: 13px 28px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+  transition: opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover { opacity: 0.87; color: #fff; }
+.btn-outline {
+  background: #fff;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 13px 28px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+.btn-outline:hover { border-color: #aab; color: var(--text); }
 
-        /* ── DIVIDER ── */
-        .divider { height: 0.5px; background: #eaecf0; max-width: 860px; margin: 0 auto; }
+/* ── DIVIDER ── */
+hr { border: none; border-top: 1px solid var(--border); max-width: 860px; margin: 0 auto; }
 
-        /* ── SECTION ── */
-        .section { padding: 72px 48px; max-width: 860px; margin: 0 auto; }
-        .section-label {
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 1.6px;
-            color: var(--blue);
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-        .section-title {
-            font-size: 28px;
-            font-weight: 600;
-            letter-spacing: -0.7px;
-            margin-bottom: 8px;
-            line-height: 1.25;
-            color: #0f0f0f;
-        }
-        .section-sub {
-            font-size: 14.5px;
-            color: #666;
-            margin-bottom: 36px;
-            line-height: 1.65;
-        }
+/* ── SECTION ── */
+section { padding: 72px 48px; max-width: 860px; margin: 0 auto; }
+.label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.6px;
+  color: var(--blue);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.sec-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.7px;
+  margin-bottom: 8px;
+  line-height: 1.25;
+  color: var(--text);
+}
+.sec-sub {
+  font-size: 14.5px;
+  color: var(--muted);
+  margin-bottom: 36px;
+  line-height: 1.65;
+}
 
-        /* ── CARDS ── */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-        .card {
-            background: #fff;
-            border: 0.5px solid #eaecf0;
-            border-radius: 14px;
-            padding: 24px;
-            transition: border-color 0.2s, transform 0.25s, box-shadow 0.25s;
-        }
-        .card:hover {
-            border-color: #b8d4f0;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px -8px rgba(55, 138, 221, 0.12);
-        }
-        .card-icon {
-            width: 42px; height: 42px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-            font-size: 19px;
-        }
-        .card-icon.blue  { background: var(--blue-bg);  color: var(--blue-dark); }
-        .card-icon.teal  { background: var(--teal-bg);  color: #0F6E56; }
-        .card-icon.amber { background: var(--amber-bg); color: #854F0B; }
-        .card h3 {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 9px;
-            letter-spacing: -0.2px;
-            color: #111;
-        }
-        .card p { font-size: 13px; color: #666; line-height: 1.7; }
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 16px;
-            font-size: 11px;
-            font-weight: 500;
-            padding: 4px 10px;
-            border-radius: 20px;
-            letter-spacing: 0.3px;
-        }
-        .tag.blue  { background: var(--blue-bg);  color: var(--blue-text); }
-        .tag.teal  { background: var(--teal-bg);  color: var(--teal-text); }
-        .tag.amber { background: var(--amber-bg); color: var(--amber-text); }
+/* ── CARDS ── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px -8px rgba(55,138,221,0.12);
+  border-color: #b8d4f0;
+}
+.icon-wrap {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+.icon-wrap.blue  { background: var(--blue-bg);  color: var(--blue-dark); }
+.icon-wrap.teal  { background: var(--teal-bg);  color: #0F6E56; }
+.icon-wrap.amber { background: var(--amber-bg); color: #854F0B; }
+.card h3 { font-size: 15px; font-weight: 600; margin-bottom: 9px; letter-spacing: -0.2px; color: var(--text); }
+.card p  { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 16px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+.tag.blue  { background: var(--blue-bg);  color: var(--blue-text); }
+.tag.teal  { background: var(--teal-bg);  color: var(--teal-text); }
+.tag.amber { background: var(--amber-bg); color: var(--amber-text); }
 
-        /* ── ABOUT ── */
-        .about { padding: 64px 48px; max-width: 860px; margin: 0 auto; }
-        .about-card {
-            background: #f7f9fc;
-            border: 0.5px solid #eaecf0;
-            border-radius: 18px;
-            padding: 36px 40px;
-        }
-        .about-card h2 {
-            font-size: 22px;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-            margin-bottom: 14px;
-            color: #0f0f0f;
-        }
-        .about-card > p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 28px;
-            max-width: 520px;
-        }
-        .steps { display: flex; align-items: center; }
-        .step { display: flex; flex-direction: column; align-items: center; gap: 7px; flex: none; }
-        .step-num {
-            width: 32px; height: 32px;
-            border-radius: 50%;
-            background: var(--blue-bg);
-            color: var(--blue-dark);
-            font-size: 12px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .step-label { font-size: 11.5px; font-weight: 500; color: #777; white-space: nowrap; }
-        .step-line {
-            flex: 1;
-            height: 0.5px;
-            background: #d8dde6;
-            margin: 0 10px;
-            margin-bottom: 20px;
-        }
+/* ── ABOUT ── */
+.about-card {
+  background: #f7f9fc;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px 40px;
+}
+.about-card h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 14px; color: var(--text); }
+.about-card > p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 28px; max-width: 520px; }
+.steps { display: flex; align-items: center; }
+.step { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.step-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--blue-bg);
+  color: var(--blue-dark);
+  font-size: 12px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-label { font-size: 11.5px; font-weight: 500; color: #888; white-space: nowrap; }
+.step-line { flex: 1; height: 1px; background: #dde3ec; margin: 0 10px; margin-bottom: 20px; }
 
-        /* ── CTA ── */
-        .cta { padding: 64px 48px; max-width: 860px; margin: 0 auto; text-align: center; }
-        .cta h2 {
-            font-size: 28px;
-            font-weight: 600;
-            letter-spacing: -0.7px;
-            margin-bottom: 12px;
-            color: #0f0f0f;
-        }
-        .cta > p {
-            font-size: 14.5px;
-            color: #666;
-            margin-bottom: 32px;
-            line-height: 1.75;
-            max-width: 420px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+/* ── CTA ── */
+.cta { text-align: center; }
+.cta h2 { font-size: 28px; font-weight: 600; letter-spacing: -0.7px; margin-bottom: 12px; color: var(--text); }
+.cta .sub { font-size: 14.5px; color: var(--muted); margin-bottom: 32px; line-height: 1.75; max-width: 420px; margin-left: auto; margin-right: auto; }
 
-        /* ── FOOTER ── */
-        .footer-bar {
-            border-top: 0.5px solid #eaecf0;
-            padding: 22px 48px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 860px;
-            margin: 0 auto;
-        }
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-        .footer-copy { font-size: 12px; color: #999; }
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 22px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.footer-logo { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--text); }
+.footer-copy { font-size: 12px; color: #aaa; }
 
-        /* ── RESPONSIVE ── */
-        @media (max-width: 680px) {
-            .nav { padding: 16px 20px; }
-            .nav-links a:not(.btn-cta) { display: none; }
-            .hero { padding: 60px 20px 56px; }
-            .hero h1 { font-size: 32px; letter-spacing: -1px; }
-            .section, .about, .cta { padding: 48px 20px; }
-            .cards { grid-template-columns: 1fr; }
-            .footer-bar { padding: 18px 20px; }
-            .steps { overflow-x: auto; padding-bottom: 4px; }
-        }
-    </style>
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  nav { padding: 0 20px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { padding: 52px 20px 48px; }
+  .hero h1 { font-size: 30px; letter-spacing: -0.8px; }
+  section { padding: 48px 20px; }
+  .cards { grid-template-columns: 1fr; }
+  .about-card { padding: 24px 20px; }
+  footer { padding: 18px 20px; }
+}
+</style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="nav">
-        <a href="#" class="logo">
-            <span class="dot"></span>
-            Bulyan <span>DEV</span>
-        </a>
-        <div class="nav-links">
-            <a href="#produk">Produk</a>
-            <a href="#tentang">Tentang</a>
-            <a href="#kontak" class="btn-cta">Konsultasi</a>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="logo">
+    <span class="dot"></span>
+    Bulyan <span class="accent">DEV</span>
+  </a>
+  <div class="nav-links">
+    <a href="#produk">Produk</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#kontak" class="nav-cta">Konsultasi</a>
+  </div>
+</nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="pill"><span class="dot"></span> Solusi IT Praktik Mandiri</div>
-        <h1>Rekam medis yang <em>benar-benar</em><br>berfungsi untuk Anda</h1>
-        <p>Bulyan DEV membangun RME dan PACS tanpa fitur mubazir — menyesuaikan alur kerja klinik Anda, bukan sebaliknya.</p>
-        <div class="hero-btns">
-            <a href="#produk" class="btn-primary">Lihat produk kami</a>
-            <a href="#kontak" class="btn-ghost">Konsultasi gratis</a>
-        </div>
-    </section>
+<!-- HERO -->
+<div class="hero">
+  <div class="pill"><span class="dot"></span> Solusi IT Praktik Mandiri</div>
+  <h1>Rekam medis yang <em>benar-benar</em><br>berfungsi untuk Anda</h1>
+  <p>Bulyan DEV membangun RME dan PACS tanpa fitur mubazir — menyesuaikan alur kerja klinik Anda, bukan sebaliknya.</p>
+  <div class="btn-row">
+    <a href="#produk" class="btn-primary">Lihat produk kami</a>
+    <a href="#kontak" class="btn-outline">Konsultasi gratis</a>
+  </div>
+</div>
 
-    <div class="divider"></div>
+<hr>
 
-    <!-- PRODUK -->
-    <section id="produk" class="section">
-        <div class="section-label">Produk unggulan</div>
-        <div class="section-title">Dirancang spesifik, bukan generik</div>
-        <div class="section-sub">Tiga layanan inti yang masing-masing menyelesaikan masalah nyata di lapangan.</div>
+<!-- PRODUK -->
+<section id="produk">
+  <div class="label">Produk unggulan</div>
+  <div class="sec-title">Dirancang spesifik, bukan generik</div>
+  <div class="sec-sub">Tiga layanan inti yang masing-masing menyelesaikan masalah nyata di lapangan.</div>
+  <div class="cards">
+    <div class="card">
+      <div class="icon-wrap blue"><i class="ti ti-stethoscope"></i></div>
+      <h3>RME Custom Praktek Mandiri</h3>
+      <p>RME pasar dijejali ratusan fitur yang bikin lambat. Kami bangun alur kerja murni berdasarkan workflow spesifik klinik Anda — ringkas, cepat, tanpa fitur yang tidak pernah dipakai.</p>
+      <div class="tag blue"><i class="ti ti-check" style="font-size:12px"></i> SATUSEHAT Ready</div>
+    </div>
+    <div class="card">
+      <div class="icon-wrap teal"><i class="ti ti-scan"></i></div>
+      <h3>Build PACS Terintegrasi</h3>
+      <p>Infrastruktur Picture Archiving & Communication System berstandar DICOM. Penyimpanan dan distribusi citra X-Ray, USG, CT-Scan — diakses dari perangkat mana pun.</p>
+      <div class="tag teal"><i class="ti ti-database" style="font-size:12px"></i> DICOM Standard</div>
+    </div>
+    <div class="card">
+      <div class="icon-wrap amber"><i class="ti ti-code"></i></div>
+      <h3>Sistem & Program Kustom</h3>
+      <p>Pengembangan modul SIMRS, bridging API BPJS/Kemenkes, sistem antrean pintar, hingga optimasi database untuk skala layanan yang lebih besar.</p>
+      <div class="tag amber">Full-stack web apps</div>
+    </div>
+  </div>
+</section>
 
-        <div class="cards">
-            <div class="card">
-                <div class="card-icon blue"><i class="ti ti-stethoscope"></i></div>
-                <h3>RME Custom Praktek Mandiri</h3>
-                <p>RME pasar dijejali ratusan fitur yang bikin lambat. Kami bangun alur kerja murni berdasarkan workflow spesifik klinik Anda — ringkas, cepat, tanpa fitur yang tidak pernah dipakai.</p>
-                <div class="tag blue"><i class="ti ti-check" style="font-size:12px"></i> SATUSEHAT Ready</div>
-            </div>
-            <div class="card">
-                <div class="card-icon teal"><i class="ti ti-scan"></i></div>
-                <h3>Build PACS Terintegrasi</h3>
-                <p>Infrastruktur Picture Archiving & Communication System berstandar DICOM. Penyimpanan dan distribusi citra X-Ray, USG, CT-Scan — diakses dari perangkat mana pun.</p>
-                <div class="tag teal"><i class="ti ti-database" style="font-size:12px"></i> DICOM Standard</div>
-            </div>
-            <div class="card">
-                <div class="card-icon amber"><i class="ti ti-code"></i></div>
-                <h3>Sistem & Program Kustom</h3>
-                <p>Pengembangan modul SIMRS, bridging API BPJS/Kemenkes, sistem antrean pintar, hingga optimasi database untuk skala layanan yang lebih besar.</p>
-                <div class="tag amber">Full-stack web apps</div>
-            </div>
-        </div>
-    </section>
+<hr>
 
-    <div class="divider"></div>
+<!-- TENTANG -->
+<section id="tentang">
+  <div class="about-card">
+    <div class="label" style="margin-bottom:8px">Filosofi kami</div>
+    <h2>Teknologi yang menyatu<br>dengan cara Anda bekerja</h2>
+    <p>Software yang baik adalah software yang tidak terasa ada — karena saking naturalnya menyatu dengan proses kerja Anda. Kami tidak menjual fitur; kami menyelesaikan masalah spesifik yang Anda hadapi sehari-hari.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><span class="step-label">Konsultasi</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num">2</div><span class="step-label">Desain alur</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num">3</div><span class="step-label">Development</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num">4</div><span class="step-label">Implementasi</span></div>
+    </div>
+  </div>
+</section>
 
-    <!-- TENTANG -->
-    <section id="tentang" class="about">
-        <div class="about-card">
-            <div class="section-label" style="margin-bottom:8px">Filosofi kami</div>
-            <h2>Teknologi yang menyatu<br>dengan cara Anda bekerja</h2>
-            <p>Software yang baik adalah software yang tidak terasa ada — karena saking naturalnya menyatu dengan proses kerja Anda. Kami tidak menjual fitur; kami menyelesaikan masalah spesifik yang Anda hadapi sehari-hari.</p>
-            <div class="steps">
-                <div class="step"><div class="step-num">1</div><span class="step-label">Konsultasi</span></div>
-                <div class="step-line"></div>
-                <div class="step"><div class="step-num">2</div><span class="step-label">Desain alur</span></div>
-                <div class="step-line"></div>
-                <div class="step"><div class="step-num">3</div><span class="step-label">Development</span></div>
-                <div class="step-line"></div>
-                <div class="step"><div class="step-num">4</div><span class="step-label">Implementasi</span></div>
-            </div>
-        </div>
-    </section>
+<hr>
 
-    <div class="divider"></div>
+<!-- KONTAK -->
+<section id="kontak" class="cta">
+  <div class="label">Hubungi kami</div>
+  <h2>Transformasi dimulai dari<br>satu percakapan</h2>
+  <p class="sub">Butuh RME yang ringan atau server PACS lokal? Mari diskusi spesifikasi yang benar-benar Anda butuhkan.</p>
+  <div class="btn-row">
+    <a href="mailto:kontak@email.com" class="btn-primary">
+      <i class="ti ti-mail" style="font-size:15px"></i> Kirim email
+    </a>
+    <a href="https://wa.me/6281934955229" target="_blank" class="btn-outline">
+      <i class="ti ti-brand-whatsapp" style="font-size:15px;color:#25D366"></i> WhatsApp
+    </a>
+  </div>
+</section>
 
-    <!-- KONTAK / CTA -->
-    <section id="kontak" class="cta">
-        <div class="section-label">Hubungi kami</div>
-        <h2>Transformasi dimulai dari<br>satu percakapan</h2>
-        <p>Butuh RME yang ringan atau server PACS lokal? Mari diskusi spesifikasi yang benar-benar Anda butuhkan.</p>
-        <div class="cta-btns">
-            <a href="mailto:kontak@email.com" class="btn-primary">
-                <i class="ti ti-mail" style="font-size:15px"></i> Kirim email
-            </a>
-            <a href="https://wa.me/6281934955229" target="_blank" class="btn-ghost">
-                <i class="ti ti-brand-whatsapp" style="font-size:15px;color:#25D366"></i> WhatsApp
-            </a>
-        </div>
-    </section>
+<hr>
 
-    <div class="divider"></div>
-
-    <!-- FOOTER -->
-    <footer class="footer-bar">
-        <div class="footer-logo">
-            <span style="width:7px;height:7px;background:#378ADD;border-radius:50%;display:inline-block"></span>
-            Bulyan DEV
-        </div>
-        <span class="footer-copy">© 2026 — All rights reserved</span>
-    </footer>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span style="width:7px;height:7px;background:#378ADD;border-radius:50%;display:inline-block"></span>
+    Bulyan DEV
+  </div>
+  <span class="footer-copy">© 2026 — All rights reserved</span>
+</footer>
 
 </body>
 </html>
